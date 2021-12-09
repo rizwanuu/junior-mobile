@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mobile</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="main_div" id="main_div">
+        <div class="training" id="training">
+            <h2>Start your training clicking the button below</h2>
+            <button class="train" onclick="strttrain()" id="train">Start Training</button>
+        </div>
+        <div class="starttest" id="starttest">
+            <h2>Start your test clicking the button below</h2>
+            <button class="test" onclick="starttrst()" id="test">Start Test</button>
+        </div>
+        <div class="lastdiv" id="lastdiv">
+            <h2 id="timeTaken"> your test is end</h2>
+            <h2 id="totalScore"> your test is end</h2>
+            <table border="1px solid" class="tab" id="tab">
+                <thead>
+                    <tr>
+                        <th>Question Number</th>
+                        <th>Requested Sequence</th>
+                        <th>Selected Sequence</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody id="tablebody"></tbody>
+            </table>
+        </div>
+
+
+        <div class="imgdiv" id="imgdiv">
+            <p class="par" id="par"></p>
+            <input type="text" class="enter" id="enter">
+            <img src="pictures/cellphone 800x600.jpg" alt="" class="img" id="img">
+            <img src="pictures/Green.jpg" alt="" onclick="greenbutton()" class="green" id="green">
+            <img src="pictures/Red.jpg" alt="" onclick="redbutton()" class="red" id="red">
+            <button class="b1" id="b1" onclick="enterNumber(1)">1</button>
+            <button class="b2" id="b2" onclick="enterNumber(2)">2</button>
+            <button class="b3" id="b3" onclick="enterNumber(3)">3</button>
+            <button class="b4" id="b4" onclick="enterNumber(4)">4</button>
+            <button class="b5" id="b5" onclick="enterNumber(5)">5</button>
+            <button class="b6" id="b6" onclick="enterNumber(6)">6</button>
+            <button class="b7" id="b7" onclick="enterNumber(7)">7</button>
+            <button class="b8" id="b8" onclick="enterNumber(8)">8</button>
+            <button class="b9" id="b9" onclick="enterNumber(9)">9</button>
+            <button class="b0" id="b0" onclick="enterNumber(0)">0</button>
+        </div>
+        <div>
+            <audio id="audio1">
+                <source src="./SOUNDS/79.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audio2">
+                <source src="./SOUNDS/58.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios1">
+                <source src="./SOUNDS/358.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios2">
+                <source src="./SOUNDS/476.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios3">
+                <source src="./SOUNDS/582.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios4">
+                <source src="./SOUNDS/694.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios5">
+                <source src="./SOUNDS/4837.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios6">
+                <source src="./SOUNDS/7392.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios7">
+                <source src="./SOUNDS/53729.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios8">
+                <source src="./SOUNDS/96184.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios9">
+                <source src="./SOUNDS/314952.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios10">
+                <source src="./SOUNDS/825736.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios11">
+                <source src="./SOUNDS/1845932.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios12">
+                <source src="./SOUNDS/7436825.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios13">
+                <source src="./SOUNDS/27359614.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios14">
+                <source src="./SOUNDS/81395276.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios15">
+                <source src="./SOUNDS/548263179.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios16">
+                <source src="./SOUNDS/9284716385.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios17">
+                <source src="./SOUNDS/good.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios18">
+                <source src="./SOUNDS/intro.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios19">
+                <source src="./SOUNDS/ringring.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios20">
+                <source src="./SOUNDS/toned.wav" type="audio/mpeg">
+            </audio>
+            <audio id="audios21">
+                <source src="./SOUNDS/try_again.wav" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+    <script>
+        var audios1 = [];
+        var audios = [];
+        var ifWrong = [];
+        var indexesArr = [];
+        var check = -1;
+        var tim1;
+        var tim2;
+        var tim3;
+        var min;
+        var sec;
+        var check1 = 1;
+        var test;
+        var questnumber = 0;
+        var pree;
+        var pre;
+        var pak = 1;
+        xx = 0;
+        var score = 0;
+        var i = 0;
+        var indexofarr = 0;
+        var onebyonescore = [];
+        var audios18 = document.getElementById("audios18");
+        var audios19 = document.getElementById("audios19");
+        var audios20 = document.getElementById("audios20");
+        var ans = ['358', '476', '582', '694', '4837', '7392', '53729', '96184', '314952', '825736', '1845932', '7436825', '27359614', '81395276', '548263179', '9284716385'];
+        var answers = ['79', '58'];
+        var train;
+        for (var k = 2; k <= ans.length; k++) {
+            audios1.push(document.getElementById('audios' + '' + k));
+        }
+
+        for (var j = 2; j <= answers.length; j++) {
+            audios.push(document.getElementById('audio' + '' + j));
+        }
+
+        function myFunction() {
+            var table = document.getElementById('tab').getElementsByTagName('tbody')[0];
+            for (var i = 0; i < onebyonescore.length; i++) {
+                var row = table.insertRow();
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                cell1.innerHTML = i + 1;
+                cell2.innerHTML = onebyonescore[i]?.reqseq;
+                cell3.innerHTML = onebyonescore[i]?.selectseq;
+                cell4.innerHTML = onebyonescore[i]?.onescore;
+            }
+        }
+
+        function greenbutton() {
+            audios19.play();
+            if (check == 0) {
+                pak++;
+                var grenn = document.getElementById("enter").value;
+                document.getElementById("par").innerHTML = pak;
+
+                //console.log(grenn)
+                if (answers[i] == grenn) {
+                    score += 1;
+
+                } else {
+                    xx -= 1
+                }
+                i++;
+                if (score == 2) {
+
+                    document.getElementById("imgdiv").style.display = "none";
+                    document.getElementById("starttest").style.display = "block";
+                    //console.log(score)
+
+                }
+                if (score == 1 && xx == -1 || xx == -2) {
+                    wee = 0;
+                    score = 0;
+                    xx = 0;
+
+                    console.log(xx)
+                    document.getElementById("imgdiv").style.display = "none";
+                    document.getElementById("training").style.display = "block";
+                    location.reload();
+                    // console.log(score)
+                }
+                if (pre) {
+                    pre.pause();
+                }
+                train = audios.shift();
+                if (train) {
+                    train.play();
+                }
+                pre = train;
+                document.getElementById("enter").value = '';
+            } else if (check == 1) {
+                pak++;
+                var greeen = document.getElementById("enter").value;
+                if (ans[indexofarr] == greeen) {
+                    score += 1;
+                    onebyonescore.push({
+                        onescore: 1,
+                        reqseq: ans[indexofarr],
+                        selectseq: greeen
+                    })
+                } else {
+                    // console.log(indexofarr);
+                    onebyonescore.push({
+                        onescore: 0,
+                        reqseq: ans[indexofarr],
+                        selectseq: greeen
+                    })
+                    indexesArr.push(indexofarr);
+                }
+
+                console.log(indexesArr.length, indexesArr[0] + 1, indexesArr[0 + 1])
+                if (indexesArr.length == 2 && indexesArr[0] + 1 == indexesArr[0 + 1]) {
+                    document.getElementById("lastdiv").style.display = "block";
+                    document.getElementById("imgdiv").style.display = "none";
+                    tim2 = new Date().getTime();
+                    tim3 = tim2 - tim1;
+                    console.log(tim3)
+                    min = Math.floor((tim3 / 1000 / 60) << 0)
+                    sec = Math.floor((tim3 / 1000) % 60)
+                    document.getElementById("timeTaken").innerHTML = `${min} mins ${sec} seconds`;
+                    document.getElementById("totalScore").innerHTML = `you scored ${score - 2}`;
+                    // console.log('min' + min + 'sec' + sec)
+                    console.log(onebyonescore);
+                    myFunction();
+                    // for (var i = 0; i <= onebyonescore.length; i++) {
+                    //     $("#tablebody").append(
+                    //         `<tr>
+                    //             <td>${onebyonescore[i].onescore}</td>
+                    //             <td>${onebyonescore[i].reqseq}</td>
+                    //             <td>${onebyonescore[i].selectseq}</td>
+                    //         </tr>`);
+                    // }
+
+                } else if (score == 16) {
+                    document.getElementById("lastdiv").style.display = "block";
+                    document.getElementById("imgdiv").style.display = "none";
+                    tim2 = new Date().getTime();
+                    tim3 = tim2 - tim1;
+                    var min = Math.floor((tim3 / 1000 / 60) << 0);
+                    var sec = Math.floor((tim3 / 1000) % 60);
+                    document.getElementById("timeTaken").innerHTML = `${min} mins ${sec} seconds`;
+                    document.getElementById("totalScore").innerHTML = `you scored ${score - 2}`;
+                } else {
+                    if (pree) {
+                        pree.pause();
+                    }
+                    //console.log(audios1)
+                    test = audios1.shift();
+                    if (test) {
+                        test.play();
+                    }
+                    pree = test;
+                    document.getElementById("enter").value = '';
+                }
+
+                indexofarr++;
+                document.getElementById("par").innerHTML = pak;
+            }
+        }
+
+        function strttrain() {
+            document.getElementById("training").style.display = "none";
+            document.getElementById("imgdiv").style.display = "grid";
+            audios18.play();
+            audios18.onended = () => {
+                train = document.getElementById("audio1");
+                train.play();
+                check = 0;
+                pre = train;
+                document.getElementById("par").innerHTML = pak;
+            }
+
+        }
+
+        function enterNumber(number) {
+            audios20.play();
+            if (check == 0) {
+                document.getElementById("enter").value += number;
+            } else if (check == 1) {
+                document.getElementById("enter").value += number;
+            }
+        }
+
+        function redbutton() {
+            if (check == 0) {
+                var inputValue = document.getElementById("enter").value;
+                var newvalue = inputValue.substring(0, inputValue.length - 1);
+                document.getElementById("enter").value = newvalue;
+            } else if (check == 1) {
+                var inputValue = document.getElementById("enter").value;
+                var newvalue = inputValue.substring(0, inputValue.length - 1);
+                document.getElementById("enter").value = newvalue;
+            }
+
+        }
+
+        function starttrst() {
+            tim1 = new Date().getTime();
+            console.log(tim1);
+            check = 1;
+            document.getElementById("starttest").style.display = "none";
+            document.getElementById("imgdiv").style.display = "grid";
+            test = document.getElementById("audios1");
+            test.play();
+            pak = 1;
+            document.getElementById("par").innerHTML = pak;
+
+
+            pree = test;
+
+        }
+    </script>
+</body>
+
+</html>
